@@ -1,20 +1,34 @@
-import React from "react";
-import { View, StyleSheet, Image, Text, ScrollView } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, Image, Text, ScrollView, Modal, Button, TouchableHighlight } from "react-native";
 
 const App = () => {
+  const [modalVisibleplaya, setModalVisibleplaya] = useState(false);
   return (
     <ScrollView>
       {/* Banner y contenido horizontal */}
+      <Modal transparent = {true} animationType="slide" visible = {modalVisibleplaya} onRequestClose={() => {
+        alert('Modal has been closed');
+      }} >
+        <View style = {styles.vistaModal}>
+          <View style = {styles.Modal}>
+            <Text style = {styles.subtitulo}>Ir a la playa</Text>
+            <Text>El Salvador cuenta con hermosas playas a nivel Centroamérica</Text>
+            <Button title="Cerrar" onPress={() => {setModalVisibleplaya(!modalVisibleplaya)}}></Button>
+          </View>
+        </View>
+      </Modal>
       <View>
         <Image style={styles.banner} source={require("./src/img/bg.jpg")} />
         <View style={styles.contenedor}>
           <Text style={styles.titulo}>Qué hacer en El Salvador</Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <ScrollView horizontal>
             <View>
-              <Image
+              <TouchableHighlight onPress={()=>{setModalVisibleplaya(!modalVisibleplaya)}}>
+                <Image
                 style={styles.ciudad}
                 source={require("./src/img/actividad1.jpg")}
               />
+              </TouchableHighlight>
             </View>
             <View>
               <Image
@@ -130,6 +144,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
+  },
+  vistaModal:{
+    backgroundColor: '#000000aa',
+    flex: 1,
+  },
+  Modal:{
+    backgroundColor: '#fff',
+    margin:50,
+    padding:40,
+    borderRadius:10,
+    flex:1,
+  },
+  subtitulo:{
+    fontWeight:'bold',
+    fontSize:14,
+
+    justifyContent:'center',
   },
 });
 
