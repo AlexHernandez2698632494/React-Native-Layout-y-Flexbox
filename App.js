@@ -3,7 +3,7 @@ import { View, StyleSheet, Image,Text, ScrollView } from "react-native";
 const App = () => {
   return (
     <>
-      <View>
+      <ScrollView>
         <View style={{ flexDirection: "row" }}>
           <Image style={styles.banner} source={require("./src/img/bg.jpg")} />
           <View style = {styles.contenedor}>
@@ -33,7 +33,23 @@ const App = () => {
           </View>
           
         </View>
+      </ScrollView>
+      <Text style = {styles.titulo}>Platillos Salvadoreños</Text>
+      <View>
+        <View>
+          <Image style = {styles.mejores} source={require('./src/img/mejores1.jpg')} />
+        </View>
+
+        <View>
+          <Image style = {styles.mejores} source={require('./src/img/mejores2.jpg')} />
+        </View>
+
+        <View>
+          <Image style = {styles.mejores} source={require('./src/img/mejores3.jpg')} />
+        </View>
       </View>
+
+      <Text style = {styles.titulo}>Rutas Turisticas</Text>
     </>
   );
 };
@@ -54,6 +70,11 @@ const styles = StyleSheet.create({
     width:250,
     height:300,
     marginRight:10
+  },
+  mejores:{
+    width:"100%",
+    height: 200,
+    marginVertical: 5
   }
 });
 export default App;
